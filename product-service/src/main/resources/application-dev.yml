@@ -1,0 +1,13 @@
+server:
+    port: 8080
+
+spring:
+    application:
+        name: product-service
+    mongodb:
+        host: localhost
+        port: 27017
+        database: product_service
+    data:
+        mongodb:
+            auto-index-creation: true
