@@ -1,0 +1,7 @@
+CREATE TABLE orders_info (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    order_number VARCHAR(255) DEFAULT NULL,
+    sku_code VARCHAR(255) DEFAULT NULL,
+    price DECIMAL(38, 2) DEFAULT NULL,
+    quantity INT
+);
