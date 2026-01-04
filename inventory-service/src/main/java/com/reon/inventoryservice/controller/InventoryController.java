@@ -34,4 +34,13 @@ public class InventoryController {
                 .status(HttpStatus.OK)
                 .body(inventories);
     }
+
+    @GetMapping
+    public ResponseEntity<Boolean> isInStock(@RequestParam(name = "skuCode") String skuCode,
+                                             @RequestParam(name = "quantity") Integer quantity) {
+        boolean inStock = inventoryService.isInStock(skuCode, quantity);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(inStock);
+    }
 }

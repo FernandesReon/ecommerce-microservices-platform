@@ -20,6 +20,11 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public InventoryResponse newInventory(InventoryRequest inventoryRequest) {
+
+        if (inventoryRepository.existsBySkuCode(inventoryRequest.getSkuCode())) {
+            throw new IllegalArgumentException("Sku code already exists.");
+        }
+
         Inventory inventory = Inventory.builder()
                 .skuCode(inventoryRequest.getSkuCode())
                 .quantity(inventoryRequest.getQuantity())
@@ -44,5 +49,10 @@ public class InventoryServiceImpl implements InventoryService {
                         .quantity(inventory.getQuantity())
                         .build()
         );
+    }
+
+    @Override
+    public boolean isInStock(String skuCode, Integer quantity) {
+        return inventoryRepository.existsBySkuCodeAndQuantityIsGreaterThanEqual(skuCode, quantity);
     }
 }

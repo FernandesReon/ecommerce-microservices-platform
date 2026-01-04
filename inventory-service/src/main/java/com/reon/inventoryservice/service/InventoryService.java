@@ -7,4 +7,5 @@ import org.springframework.data.domain.Page;
 public interface InventoryService {
     InventoryResponse newInventory(InventoryRequest inventoryRequest);
     Page<InventoryResponse> fetchAllInventories(int pageNo, int pageSize);
+    boolean isInStock(String skuCode, Integer quantity);
 }
